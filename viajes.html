@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airline - Viajes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { 
+        background-color: #dededf; 
+    }
+
+    header { 
+        background-color: #007bff; 
+        color: white; 
+        padding: 20px; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        font-size: 1.4rem;
+        font-family: 'Times New Roman', Times, serif; 
+    }
+
+    .nav-link { color: white; margin-left: 15px; }
+
+    .main-container { margin-top: 30px; }
+
+    .select-container {
+        background-color: #c9c9f0; 
+        padding: 20px;
+        border: 1px solid #007BFF;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+    }
+
+    .card-container { display: flex; flex-wrap: wrap; }
+
+    .travel-card {
+        width: 200px; 
+        margin: 10px; 
+        text-align: center; 
+        padding: 10px; 
+        border-radius: 10px; 
+        position: relative;
+    }
+
+    .travel-card img { 
+        width: 160px; 
+        height: 100px; 
+        margin-bottom: 10px; 
+    }
+
+    .travel-card p { 
+        margin: 0;
+        text-align: left; 
+    }
+
+    .modal-content {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    /* Estilo para el panel de confirmación de reservas */
+    .panel-confirmacion {
+        max-height: 80vh; /* Limita la altura máxima al 80% del viewport */
+        overflow-y: auto; /* Habilita el desplazamiento vertical */
+        padding: 15px; /* Espaciado interno */
+        background-color: #fff; /* Fondo del panel */
+        border: 1px solid #ddd; /* Borde para visualización */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+        /*border-radius: 8px; /* Bordes redondeados */
+        position: fixed; /* Fijar posición */
+        top: 10%; /* Separación desde el borde superior */
+        /*left: 50%; /* Centrar horizontalmente */
+        transform: translateX(-50%); /* Ajustar posición al centro */
+        z-index: 1050; /* Asegurar que esté por encima del fondo */
+        width: 90%; /* Ocupar hasta el 90% del ancho del viewport */
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="https://uploads.turbologo.com/uploads/design/preview_image/1804656/preview_image20201112-2654-x4cce5.png" alt="Logo de la Aerolínea" style="height: 50px;">
+        </a>
+        <nav class="nav">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="viajes.html">Viajes</a>
+            <a class="nav-link" href="destinos.html">Destinos</a>
+            <a class="nav-link" href="registro.html">Registro</a>
+        </nav>
+    </header>
+  
+    <div class="container main-container">
+        <div class="select-container">
+            <h2>Seleccionar Viajes</h2>
+            <p>Encuentra los mejores paquetes de viaje adaptados a tus necesidades.</p>
+            <button id="checkSelection" class="btn btn-primary" data-toggle="modal" data-target="#bookingModal">Ver Selección</button>
+        </div>
+      
+        <div class="card-container">
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #e0f7fa;">
+                <img src="https://s1.1zoom.me/big3/487/Sky_Evening_France_Eiffel_Tower_Paris_From_above_520603_5416x3611.jpg" alt="París">
+                <h5>París</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> París, Francia</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $500</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="París, Francia" data-precio="500">
+                <label>Seleccionar</label>
+            </div>
+            <!-- Other travel cards here -->
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #ffebee;">
+                <img src="https://elviajerofeliz.com/wp-content/uploads/2020/05/Por-qu%C3%A9-Tokio-es-una-de-las-ciudades-m%C3%A1s-sorprendentes.jpg" alt="Tokio">
+                <h5>Tokio</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Tokio, Japón</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $800</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Tokio, Japón" data-precio="800">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #e1bee7;">
+                <img src="https://image.urlaubspiraten.de/1024/image/upload/v1628090548/mediavault_images/AdobeStock_191744672_tc39hh.jpg" alt="Nueva York">
+                <h5>New York</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Nueva York, EE. UU.</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $600</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Nueva York, EE. UU." data-precio="600">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #c8e6c9;">
+                <img src="https://tecnimetalglass.com/wp-content/uploads/2023/02/carpinteria-de-aluminio-en-barcelona.jpg.webp" alt="Barcelona">
+                <h5>Barcelona</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Barcelona, España</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $450</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Barcelona, España" data-precio="450">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #ffe0b2;">
+                <img src="https://www.caribbeannewsdigital.com/sites/default/files/2020-03/Rio_de_Janeiro.jpg" alt="Río de Janeiro">
+                <h5>Río de Janeiro</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Río de Janeiro, Brasil</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $350</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Río de Janeiro, Brasil" data-precio="350">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #bbdefb;">
+                <img src="https://www.viajesyfotografia.com/wp-content/uploads/2018/03/BAsDSC_8803.1023_result.jpg" alt="Buenos Aires">
+                <h5>Buenos Aires</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Buenos Aires, Argentina</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $400</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Buenos Aires, Argentina" data-precio="400">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #fce4ec;">
+                <img src="https://elcomercio.pe/resizer/p5bfxIurBC_Z7ewhHkRV18iGKxk=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/VBRGPJZ6PRDMFE5MWB3KRD76PQ.jpeg" alt="Santiago">
+                <h5>Santiago</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Santiago, Chile</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $300</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Santiago, Chile" data-precio="300">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #d1c4e9;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Cancun_Strand_Luftbild_%2822143397586%29.jpg" alt="Cancún">
+                <h5>Cancún</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Cancún, México</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $700</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Cancún, México" data-precio="700">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #ffccbc;">
+                <img src="https://maravilloso.exclusivetravelerclub.com/wp-content/uploads/2023/06/Roma1.jpg" alt="Roma">
+                <h5>Roma</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Roma, Italia</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $500</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Roma, Italia" data-precio="500">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #cfd8dc;">
+                <img src="https://www.tourinperu.com/wp-content/uploads/2014/03/Diseno-sin-titulo-3-1.webp" alt="Lima">
+                <h5>Cuzco</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Cuzco, Perú</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $200</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Lima, Perú" data-precio="200">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #ffe0f0;">
+                <img src="https://cdn5.travelconline.com/unsafe/fit-in/2000x0/filters:quality(75):strip_metadata():format(webp)/https%3A%2F%2Ftr2storage.blob.core.windows.net%2Fimagenes%2Fw93ajmCjfcEI-65CJc5JQucjpeg.jpeg" alt="Dubai">
+                <h5>Dubai</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Dubai, Emiratos Árabes Unidos</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $900</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Dubai, Emiratos Árabes Unidos" data-precio="900">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #e3f2fd;">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/34/00/95/community-of-madrid.jpg?w=1400&h=1400&s=1" alt="Barcelona">
+                <h5>Madrid</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Madrid, España</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $750</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Barcelona, España" data-precio="750">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #bbdefb;">
+                <img src="https://content.r9cdn.net/rimg/dimg/17/74/0ca6e469-city-30651-1632b88f203.jpg?width=1366&height=768&xhint=2635&yhint=1507&crop=true" alt="Miami">
+                <h5>Miami</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Miami, EE. UU.</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $800</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Miami, EE. UU." data-precio="800">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #f1f8e9;">
+                <img src="https://www.mexicodesconocido.com.mx/sites/default/files/fichas-destino/monterrey-nuevo-leon-panoramica.jpg" alt="Cancún">
+                <h5>Monte Rey</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Monte Rey, México</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $700</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Cancún, México" data-precio="700">
+                <label>Seleccionar</label>
+            </div>
+            <div class="travel-card" style="border: 1px solid #007BFF; background-color: #ffe0b2;">
+                <img src="https://www.dosmanosperu.com/fotos/contenidos/quever/zoom/plaza-de-armas-cajamarca.jpg" alt="Lima">
+                <h5>Cajamarca</h5>
+                <p><b>Origen:</b> Lima</p>
+                <p><b>Destino:</b> Cajamarca, Perú</p>
+                <p><b>Fecha:</b> Se Determina de Manera Propia.</p>
+                <p><b>Hora:</b> Se Determina de Manera Propia.</p>
+                <p><b>Precio:</b> $200</p>
+                <input type="checkbox" class="travel-checkbox" data-origen="Lima" data-destino="Lima, Perú" data-precio="200">
+                <label>Seleccionar</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for final confirmation -->
+    <div class="modal fade" id="finalConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="finalConfirmationLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="finalConfirmationLabel">Confirmación de Reserva</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="finalDetails">
+                    <!-- Final details will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="payOnlineButton" data-toggle="modal" data-target="#paymentModal">Pagar en Línea</button>
+                    <button type="button" class="btn btn-warning" id="payAtAirport">Pagar en Aeropuerto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Payment Details -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentLabel">Detalles de Pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="cardHolder"><b>Nombre del Titular:</b></label>
+                            <input type="text" class="form-control" id="cardHolder" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="accountNumber"><b>Número de Cuenta:</b></label>
+                            <input type="text" class="form-control" id="accountNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate"><b>Fecha de Vencimiento:</b></label>
+                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/YYYY" maxlength="7" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvc"><b>CVC:</b></label>
+                            <input type="text" class="form-control" id="cvc" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><b>Correo Electrónico:</b></label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Procesar Pago</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for entering passenger details -->
+    <div class="modal fade" id="passengerDetailsModal" tabindex="-1" role="dialog" aria-labelledby="passengerDetailsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="passengerDetailsLabel">Detalles de Pasajeros</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="passengerForm">
+                        <div class="form-group">
+                            <label for="passengerName">Nombre:</label>
+                            <input type="text" class="form-control" id="passengerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passengerLastName">Apellido:</label>
+                            <input type="text" class="form-control" id="passengerLastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passengerDni">DNI:</label>
+                            <input type="text" class="form-control" id="passengerDni" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passengerGender">Sexo:</label>
+                            <select class="form-control" id="passengerGender">
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="savePassenger">Guardar Datos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Modal for booking -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles de la Reserva</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="ticketCount">Cantidad de boletos:</label>
+                            <input type="number" class="form-control" id="ticketCount" min="1" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date"><b>Fecha:</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Hora:</label>
+                            <input type="time" class="form-control" id="time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nombre completo:</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div id="totalCost" style="margin-top: 20px;"></div>
+                        <!-- Contenedor para los pasajeros -->
+                        <div id="passengerFields" style="margin-top: 20px;"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="submitBooking">Confirmar Reserva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar el voucher -->
+    <div class="modal fade" id="paymentVoucherModal" tabindex="-1" aria-labelledby="paymentVoucherModalLabel" aria-hidden="true">
+    <di class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="paymentVoucherModalLabel">Voucher de Pago</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Origen:</strong> <span id="voucherOrigin"></span></p>
+            <p><strong>Destino:</strong> <span id="voucherDestination"></span></p>
+            <p><strong>Total a Pagar:</strong> $<span id="voucherTotal"></span></p>
+            <p><strong>Código de Pago:</strong> <span id="voucherCode"></span></p>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="voucherEmail" placeholder="Ingresa tu correo">
+            </div>
+            
+            <!-- Contenedor para mostrar los mensajes -->
+            <span id="emailFeedback" style="display:none; font-size: 14px;"></span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="sendVoucher">Enviar Voucher</button>
+        </div>
+        </div>
+    </div>
+
+
+<script>
+    let selectedTrips = [];
+    let passengerData = [];
+
+    // Cuando se haga clic en el botón "Ver Selección", almacenar las selecciones y mostrar los detalles de la reserva
+    document.getElementById('checkSelection').addEventListener('click', function() {
+        selectedTrips = [];
+        const checkboxes = document.querySelectorAll('.travel-checkbox:checked');
+        
+        checkboxes.forEach(function(checkbox) {
+            const origen = checkbox.getAttribute('data-origen');
+            const destino = checkbox.getAttribute('data-destino');
+            const precio = checkbox.getAttribute('data-precio');
+            
+            selectedTrips.push({ origen, destino, precio });
+        });
+        
+        let finalDetails = '<ul>';
+        let total = 0;
+        selectedTrips.forEach(function(trip) {
+            finalDetails += `<li>${trip.origen} - ${trip.destino} | Precio: $${trip.precio}</li>`;
+            total += parseFloat(trip.precio);
+        });
+        finalDetails += `</ul><p>Total: $${total}</p>`;
+        
+        document.getElementById('finalDetails').innerHTML = finalDetails;
+    });
+    
+    // Generar campos dinámicamente para los pasajeros
+    function generatePassengerFields(ticketCount) {
+        const passengerContainer = document.getElementById('passengerFields');
+        passengerContainer.innerHTML = ''; // Limpiar campos existentes
+
+        for (let i = 1; i <= ticketCount; i++) {
+            // Crear un div contenedor para cada pasajero
+            let passengerDiv = document.createElement('div');
+            passengerDiv.className = 'passenger';
+
+            // Etiqueta para el pasajero
+            let label = document.createElement('label');
+            label.textContent = `Pasajero ${i}:`;
+
+            // Campo de texto para el nombre del pasajero
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = `Nombre del pasajero ${i}`;
+            input.name = `passenger${i}`;
+            input.required = true;
+
+            // Añadir elementos al contenedor
+            passengerDiv.appendChild(label);
+            passengerDiv.appendChild(input);
+            passengerContainer.appendChild(passengerDiv);
+        }
+    }
+
+    // Actualiza dinámicamente los campos de pasajeros y recalcula el total
+    document.getElementById('ticketCount').addEventListener('input', function () {
+        let ticketCount = parseInt(this.value) || 0; // Cantidad de boletos ingresada
+        generatePassengerFields(ticketCount);
+
+        let selectedCheckbox = document.querySelector('.travel-checkbox:checked');
+        if (selectedCheckbox) {
+            let unitPrice = parseFloat(selectedCheckbox.dataset.precio); // Precio del destino seleccionado
+            let total = ticketCount * unitPrice;
+            document.getElementById('totalCost').innerHTML = `<strong>Total a pagar: $${total}</strong>`;
+        } else {
+            document.getElementById('totalCost').innerHTML = `<strong>Total a pagar: $0</strong>`;
+        }
+    });
+
+    // Actualiza el total cuando se selecciona un destino
+    document.querySelectorAll('.travel-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            // Desmarca otros checkboxes para que solo uno esté activo
+            document.querySelectorAll('.travel-checkbox').forEach(cb => {
+                if (cb !== this) cb.checked = false;
+            });
+
+            // Recalcula el total si se selecciona un destino
+            let ticketCountInput = document.getElementById('ticketCount');
+            let ticketCount = parseInt(ticketCountInput.value) || 0; // Cantidad de boletos
+            generatePassengerFields(ticketCount); // Regenera campos en caso de cambio
+
+            let unitPrice = parseFloat(this.dataset.precio); // Precio desde el atributo data-precio
+            let total = ticketCount * unitPrice;
+            document.getElementById('totalCost').innerHTML = `<strong>Total a pagar: $${total}</strong>`;
+        });
+    });
+
+    // Función para generar los campos de los pasajeros en función de la cantidad de boletos
+    function generatePassengerFields(ticketCount) {
+        const passengerContainer = document.getElementById('passengerFields');
+        passengerContainer.innerHTML = ''; // Limpiar campos existentes
+
+        for (let i = 0; i < ticketCount; i++) {
+            // Crear un fieldset para agrupar los campos del pasajero
+            let fieldset = document.createElement('fieldset');
+            fieldset.className = 'passenger-group';
+            fieldset.style.marginBottom = '20px';
+
+            // Crear un subtítulo (legend) para los datos del pasajero
+            let legend = document.createElement('legend');
+            legend.textContent = `Datos del Pasajero ${i + 1}`;
+            legend.style.fontWeight = 'bold';
+
+            // Crear los campos para nombre, apellido, DNI y sexo
+            fieldset.innerHTML = `
+                <div class="form-group">
+                    <label for="passengerName${i}">Nombre:</label>
+                    <input type="text" class="form-control" id="passengerName${i}" required>
+                </div>
+                <div class="form-group">
+                    <label for="passengerLastName${i}">Apellido:</label>
+                    <input type="text" class="form-control" id="passengerLastName${i}" required>
+                </div>
+                <div class="form-group">
+                    <label for="passengerDni${i}">DNI:</label>
+                    <input type="text" class="form-control" id="passengerDni${i}" required>
+                </div>
+                <div class="form-group">
+                    <label for="passengerGender${i}">Sexo:</label>
+                    <select class="form-control" id="passengerGender${i}">
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+            `;
+
+            // Añadir el subtítulo al fieldset
+            fieldset.prepend(legend);
+
+            // Añadir el fieldset al contenedor principal
+            passengerContainer.appendChild(fieldset);
+        }
+    }
+
+    // Cuando se confirma la reserva, mostrar los datos de los pasajeros en el panel de confirmación
+    document.getElementById('submitBooking').addEventListener('click', function() {
+        // Capturar los datos de la reserva
+        const ticketCount = document.getElementById('ticketCount').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const name = document.getElementById('name').value;
+
+        if (!ticketCount || !date || !time || !name) {
+            alert('Por favor, complete todos los campos antes de confirmar.');
+            return;
+        }
+
+        // Capturar los datos de los pasajeros
+        let passengers = [];
+        for (let i = 0; i < ticketCount; i++) {
+            let passenger = {
+                name: document.getElementById(`passengerName${i}`).value,
+                lastName: document.getElementById(`passengerLastName${i}`).value,
+                dni: document.getElementById(`passengerDni${i}`).value,
+                gender: document.getElementById(`passengerGender${i}`).value,
+            };
+            passengers.push(passenger);
+        }
+
+        // Capturar los viajes seleccionados
+        let selectedTripDetails = '';
+        selectedTrips.forEach(function(trip) {
+            selectedTripDetails += `<li><strong>Origen:</strong> ${trip.origen} | <strong>Destino:</strong> ${trip.destino} | Precio: $${trip.precio}</li>`;
+        });
+
+        // Mostrar los detalles de la reserva
+        let confirmationMessage = `
+            <p><strong>Resumen de la Reserva:</strong></p>
+            <ul>
+                <li><strong>Nombre:</strong> ${name}</li>
+                <li><strong>Cantidad de Boletos:</strong> ${ticketCount}</li>
+                <li><strong>Fecha:</strong> ${date}</li>
+                <li><strong>Hora:</strong> ${time}</li>
+            </ul>
+            <p><strong>Detalles del Viaje:</strong></p>
+            <ul>
+                ${selectedTripDetails}
+            </ul>
+            <p><strong>Detalles de los Pasajeros:</strong></p>
+            <ul>
+        `;
+        passengers.forEach(function(passenger, index) {
+            confirmationMessage += `
+                <li>
+                    <strong>Pasajero ${index + 1}:</strong><br>
+                    <strong>Nombre:</strong> ${passenger.name} ${passenger.lastName}<br>
+                    <strong>DNI:</strong> ${passenger.dni}<br>
+                    <strong>Sexo:</strong> ${passenger.gender}
+                </li>
+            `;
+        });
+        confirmationMessage += `</ul><p>¡Su reserva ha sido confirmada!</p>`;
+
+        document.getElementById('finalDetails').innerHTML = confirmationMessage;
+
+        // Abre el modal de confirmación de pago
+        $('#finalConfirmationModal').modal('show');
+    });
+
+    //Modal para autocompletado de fecha de vencimiento
+    document.getElementById('expiryDate').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, ''); // Eliminar cualquier carácter no numérico
+
+        // Si hay más de 2 dígitos, agregar el '/'
+        if (value.length >= 2 && value.length <= 4) {
+            value = value.slice(0, 2) + '/' + value.slice(2, 6);
+        }
+
+        // Limitar a 7 caracteres (MM/YYYY)
+        if (value.length > 7) {
+            value = value.slice(0, 7);
+        }
+
+        e.target.value = value;
+    });
+
+    document.getElementById('savePassenger').addEventListener('click', function() {
+        let passengerName = document.getElementById('passengerName').value;
+        let passengerLastName = document.getElementById('passengerLastName').value;
+        let passengerDni = document.getElementById('passengerDni').value;
+        let passengerDob = document.getElementById('passengerDob').value;
+        let passengerGender = document.getElementById('passengerGender').value;
+
+        passengerData.push({
+            name: passengerName,
+            lastName: passengerLastName,
+            dni: passengerDni,
+            dob: passengerDob,
+            gender: passengerGender
+        });
+
+        alert('Datos guardados exitosamente.');
+        $('#passengerDetailsModal').modal('hide');
+    });
+
+    // Generar código de pago aleatorio
+    function generatePaymentCode() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let code = '';
+        for (let i = 0; i < 8; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return code;
+    }
+
+    //pagar aeropuert
+    document.getElementById('payAtAirport').addEventListener('click', function () {
+        if (selectedTrips.length === 0) {
+            alert('Por favor, selecciona al menos un viaje.');
+            return;
+        }
+
+        const ticketCount = parseInt(document.getElementById('ticketCount').value) || 1;
+        let total = 0;
+        let details = '';
+
+        selectedTrips.forEach(trip => {
+            total += ticketCount * parseFloat(trip.precio);
+            details += `<li>Origen: ${trip.origen} | Destino: ${trip.destino} | Precio por boleto: $${trip.precio}</li>`;
+        });
+
+        // Actualizar el contenido del modal con los datos seleccionados
+        document.getElementById('voucherOrigin').textContent = selectedTrips[0].origen;
+        document.getElementById('voucherDestination').textContent = selectedTrips[0].destino;
+        document.getElementById('voucherTotal').textContent = total.toFixed(2);
+        document.getElementById('voucherCode').textContent = generatePaymentCode();
+
+        // Mostrar el modal
+        const modal = new bootstrap.Modal(document.getElementById('paymentVoucherModal'));
+        modal.show();
+    });
+
+    // Manejar el envío del voucher
+    document.getElementById('sendVoucher').addEventListener('click', function () {
+        const email = document.getElementById('voucherEmail').value;
+        const feedback = document.getElementById('emailFeedback');
+        
+        // Limpiar el mensaje anterior antes de mostrar uno nuevo
+        feedback.style.display = "none"; // Ocultar cualquier mensaje previo
+
+        // Verificar si el correo contiene '@'
+        if (email.includes('@')) {
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                feedback.textContent = `El voucher de reserva de pago ha sido enviado a ${email}`;
+                feedback.style.color = "green";
+                feedback.style.display = "block"; // Mostrar el mensaje
+            } else {
+                feedback.textContent = 'Por favor, ingresa un correo válido.';
+                feedback.style.color = "red";
+                feedback.style.display = "block"; // Mostrar el mensaje
+            }
+        } else {
+            feedback.textContent = 'El correo no existe.';
+            feedback.style.color = "red";
+            feedback.style.display = "block"; // Mostrar el mensaje
+        }
+    });
+
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/inputmask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

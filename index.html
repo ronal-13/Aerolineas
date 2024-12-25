@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerolínea</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #007BFF; /* Color del encabezado */
+            padding: 20px;
+            color: white;
+            font-size: 1.4rem;
+            font-family: 'Times New Roman', Times, serif; /* Cambiar a Times New Roman */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-left: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .carousel-item img {
+            width: 100%; /* Hacer que las imágenes ocupen todo el ancho */
+            height: 400px; /* Altura fija para todas las imágenes */
+            object-fit: cover; /* Mantener la proporción sin deformar */
+        }
+        .airline-logo {
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-family: 'Times New Roman', Times, serif; /* Cambiar a Times New Roman */
+        }
+        .airline-card {
+            width: 140px; /* Ancho del cuadro */
+            height: 170px; /* Alto del cuadro */
+            background-color: #E0F7FA; /* Fondo celeste claro */
+            border: 1px solid #B2EBF2; /* Borde claro */
+            border-radius: 10px; /* Esquinas redondeadas */
+            text-align: center; /* Centrar el texto */
+            margin: 20px; /* Espaciado entre cuadros */
+            padding: 5px; /* Espaciado interno */
+        }
+        .text-center {
+            text-align: center; /* Asegura que el texto esté centrado */
+        }
+        .welcome-card {
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20230805/pngtree-airport-tarmac-image_12984729.jpg'); /* Cambia esta URL por la imagen de fondo que desees */
+            background-size: cover; /* Asegura que la imagen cubra todo el cuadro */
+            background-position: center; /* Centra la imagen de fondo */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 10px; /* Esquinas redondeadas */
+            color: white; /* Cambiar el color del texto a blanco */
+            margin: 20px 0; /* Espaciado superior e inferior */
+            font-size: 1.5rem;
+            font-family: 'Times New Roman', Times, serif; /* Cambiar a Times New Roman */
+        }
+    
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="https://uploads.turbologo.com/uploads/design/preview_image/1804656/preview_image20201112-2654-x4cce5.png" alt="Logo de la Aerolínea" style="height: 50px;">
+        </a>
+        
+        <nav style="float: right;">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="viajes.html">Viajes</a></li>
+                <li><a href="destinos.html">Destinos</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container mt-4">
+        <div class="welcome-card">
+            <h1 class="text-center">Bienvenido a nuestra Aerolínea</h1>
+            <p class="text-center">Ofrecemos los mejores viajes a los destinos más hermosos.</p>
+        </div>
+        
+        <!-- Cuadro para "Tú eliges dónde viajar" -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Tú eliges dónde viajar</h2>
+                <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="3000">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/02/top-20-lugares-turisticos-del-peru_7-1.webp" class="d-block" alt="Imagen 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn.inteligenciaviajera.com/wp-content/uploads/2020/03/Sitios-turisticos.jpg" class="d-block" alt="Imagen 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/L2W3PEXXGVAAPFDVDWCHAC73EM.jpg" class="d-block" alt="Imagen 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://media.admagazine.com/photos/6283c46dbdffe6073f3d108a/master/w_1600%2Cc_limit/GettyImages-484162163.jpg" class="d-block" alt="Imagen 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://proyectoviajero.com/wp-content/uploads/2021/02/Maravillas-del-Mundo-Piramide-Guiza-Keops.jpg" class="d-block" alt="Imagen 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn.inteligenciaviajera.com/wp-content/uploads/2020/03/Sitios-tur%C3%ADsticos-en-el-mundo.jpg" class="d-block" alt="Imagen 6">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/KXJB4G7IDZGLBN5MFVXANYYBRQ.jpg" class="d-block" alt="Imagen 7">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://www.lavanguardia.com/files/image_948_465/uploads/2016/03/30/5fa2b46ccdf13.jpeg" class="d-block" alt="Imagen 8">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cuadro para "Con prestigio de muchas aerolíneas" -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title text-center"><b>Con Prestigio De Muchas Aerolíneas Internacionales</b></h3>
+                <div class="d-flex flex-wrap justify-content-center mt-3"> <!-- Cambiado a justify-content-center para centrar los cuadros -->
+                    <div class="airline-card text-center">
+                        <img src="https://e7.pngegg.com/pngimages/464/205/png-clipart-united-airlines-continental-airlines-aircraft-livery-logo-airline-miscellaneous-text.png" alt="Logo Aerolínea 1" class="airline-logo">
+                        <p>CONTINENTAL AIRLINES</p>
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="https://i.pinimg.com/736x/90/f0/61/90f0614f1b546831141c5c077e6418e6.jpg" alt="Logo Aerolínea 2" class="airline-logo">
+                        <p>EMIRATES</p>
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="https://i0.wp.com/www.jentel.mx/wp-content/uploads/2022/10/Sky-e1666145186467.png?fit=750%2C469&ssl=1" alt="Logo Aerolínea 3" class="airline-logo">
+                        <p>SKY</p>
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="https://1000marcas.net/wp-content/uploads/2021/06/Delta-Air-Lines-Logo-2007-now-500x281.jpg" alt="Logo Aerolínea 4" class="airline-logo">
+                        <p>DELTA</p>
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="https://1000marcas.net/wp-content/uploads/2021/06/China-Southern-Airlines-logo-500x281.jpg" alt="Logo Aerolínea 5" class="airline-logo">
+                        <p>CHINA DEL SUR</p>
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="https://1000marcas.net/wp-content/uploads/2021/06/Spirit-Airlines-logo-500x281.jpg" alt="Logo Aerolínea 6" class="airline-logo">
+                        <p>SPIRIT AIRLINES</p>
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="https://1000marcas.net/wp-content/uploads/2021/06/Singapore-Airlines-logo-500x281.jpg" alt="Logo Aerolínea 7" class="airline-logo">
+                        <p>SINGAPORE AIRLINES</p>
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFcAAABYCAMAAAC3QJuLAAAA4VBMVEUbAYj///8bAIjtFlEAAIAAAIMAAHw4MowAAInSzuKyr8rvFlAAAHiHg7SsqMYTAIbe2+mincFGQJH1F0759/voF1OOD27SGFxjXqDBFWDs6vGUkbjqADuXk75UTpY5NItwEHVgC3jFF12WE207B318EXS3FWGmFWdXDXsfBYVoDXXdF1c0CIHjF1WzFWeHEG71AETVOnDqgZjmaojuwc6mAFtiQInrN2L6zdUvJIflYIBoZKDVqb/34ufmkah/PIPqo7LhRGrzt8btVXb8wMekZ451c6YiGYXDv9Z5eKMAAGVsl/8xAAAEsklEQVRYhe2Ye3ubNhSHjSxxt4UBx8QXSGsnNWmdZGm3hbLu0m1A+/0/0M4RF0MSxw4mz7PtyfkjViTx6ujopyNBr/dqpZHGz71/2ze+2v/WVLXNGu+Vknr2JlQJebxx55MHuPvWmSxXvJXTT3JPDcMx3p7TdvF4itvv9w2nf/GGdYlWl05fmOFs3q27IKtiuUh4AXHIyYYxOVkdht69quplziB8/e69U6HHp+cfBLqtHtQTp2Coanh2MTaMIh7G5uoy5AdO+jEuzNvZXK1BY4BeXU/6Bdpwbn5QWoPBXwQ5zvslxIMjegnxAOyNcet6rbl8XcbUcSbXoSq8Xl+N5x8/SZLUnkvU841TxtQxTs9ClTPT011JOooLkQjPT8dbjY1//Gk2lQrbx31CLQQmzlcnkz6ijfnPt3euVFnE2+qMfFgJJQj59j9/qkFdK2at9526hGyDy8Wo/cuXLVT68utvZnus0K8zvriUZ1YN6v7+x9xxxkva3l/g3hgf7+rQr3/OHRhtvvmrvR7Ua+fz11pQJW1gYqjn49u7Y3TG/XpQrVnAGFGp+Xc+1hE6Y0Fi5f5OdY9STii1R6WAvdY6A4+ZbM+mbpakMgdVRIPaAtpH7DcYHXZuCFBO5Tirxzprr4cSjWxbr0OtGZWPpALX3AZVxHqoyEfsisqoXhdw5lPGO6D2erJWQbUkAlUcRt17jyq51sKmTEC7uUcJrjsUAu7ywgPcLAFoj9Ew7ZDL41zAZqJJC9YdlwhoLFTRIZf0mOyXAu7SX5Zss8IzuAfrDFWRJ8cOdZZnBaXDMBRcd+ib7KjU+AjX1T2zo6xQGaGjRO4aKsBwrPHnJ8b9nwLgWPMX0c6E01YPPFpYx10fHzVCtUOO9eeb/KJc/0W47vDoY/0hN9Pi9AV0xqPiWOv6e1Snp9qr/csNrqEcsmtdLXlNUagZaTRWXXmzUIIiRVEaaRtrghA/XKSBUjNRx6MgUKoLFUmxHp8Oy0JpeA216ruUmHhZyEzS44nUMLj6ExMLQ7nwmA3x3xEtutZ3+wMuS4r3kh7/dp9L2EyUgjwLEVlcLVyTyJmoN3dziQzuQnfNhFn6yWCGdx1rNBvEdkiI7IrGTC6mBlDAxSyURKmW9e5xCbo7DVzxIgXnGmMm5LORzBiuG7pr+W7hsOhr6Tj/AYyViYjs4lJwZ2bq6HBeiXmy6E9S8D0xs9JhfFb3wI/v0CeGMbUH3BKMLripaueTIg0uQbemlPkSfn6ARvQhxrECqI9sEWnS5Jbucug6NCP0Sctra1xEzMwohT46NPIUB8AlEyHH1m2ABVculN9jMS4AWnX2bLnorlS0SQoXc7Mo8wr90EaABTewhSmc1j815A6XXELC+mscvHAiSKc8wnGmKWELeITV41CaL7S7GKChUD1W9xefk0TbYCTUHGJ44TIUQI0HvxHMJuLl+m+5mkynqAOGhjgRd8FlGF0Xt2HeiAGlsFCSjN8voQZTDCq/ug+wRB/mpvvchh8RVVgUD+oV4LKBrscMP0dAo3iLB13H+nCU2vCHVQKAWujpVVdkRkuDnSv+5laVoQNrVOCOgDLBikbCKnu+2n/X9t/XWzW+Gtg/zoRfr8sWYuwAAAAASUVORK5CYII=" alt="Logo Aerolínea 8" class="airline-logo">
+                        <p>LATAM Perú</p>
+                    </div>    
+                    <div class="airline-card text-center">
+                        <img src="data:image/png;base64,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" alt="Logo Aerolínea 10" class="airline-logo">
+                        <p>JetSMART Perú</p>      
+                    </div>
+                    <div class="airline-card text-center">
+                        <img src="data:image/png;base64,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" alt="Logo Aerolínea 8" class="airline-logo">
+                        <p>Atsa Airlines</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
